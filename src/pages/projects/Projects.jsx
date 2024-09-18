@@ -14,24 +14,32 @@ import ProjectImg1 from "../../assets/projects/project-1.jpg";
 import ProjectImg2 from "../../assets/projects/project-2.jpg";
 
 import ProjectCopy from "./ProjectCopy";
+const projects = [
+  {
+    name: "FinTrack",
+    category: "Full-Stack",
+    img: ProjectImg1,
+    description:
+      "Welcome to the Finance Tracker application! This project is designed to help you manage your personal finances, track expenses, monitor income, and set budgeting goals, all from a sleek, user-friendly interface. Whether you’re aiming to save for the future or keep tabs on your spending, this tool provides insights into your financial habits, helping you make informed decisions.",
+
+    liveURL: "https://fintrack-next-psi.vercel.app/",
+    githubURL: "https://github.com/KoldAd1b/fintrack-next",
+  },
+  {
+    name: "Graphica",
+    category: "Full-stack",
+    img: ProjectImg2,
+    description:
+      "A powerful, browser-based Graphic Design Editor built with TypeScript and SQL for intuitive graphic creation and manipulation. This editor allows users to create, edit, and save graphic designs with a smooth, user-friendly interface.",
+    liveURL: "https://graphic-tool.vercel.app/",
+    githubURL: "https://github.com/KoldAd1b/graphic-tool",
+  },
+];
 
 const Projects = () => {
   const [projectList, setProjectList] = useState([]);
   const containerRef = useRef(null);
   const lenis = useLenis(({ scroll }) => {});
-
-  const projects = [
-    {
-      name: "FinTrack",
-      category: "Full-Stack",
-      img: ProjectImg1,
-    },
-    {
-      name: "Graphica",
-      category: "Full-stack",
-      img: ProjectImg2,
-    },
-  ];
 
   useEffect(() => {
     const initialSet = Array(30)
@@ -83,36 +91,39 @@ const Projects = () => {
   }, [projectList]);
 
   return (
-    <ReactLenis root>
-      <div
-        className="projects"
-        ref={containerRef}
-        style={{
-          height: "100vh",
-          // overflowY: "auto",
-          // to enable infinite scrolling, uncomment `overflowY: "auto"` and remove the <ReactLenis root> component from root
-        }}
-      >
-        <div className="container">
-          {projectList.map((project) => (
-            <div className="row" key={project.id}>
-              <div className="project-item">
-                <div className="project-img-container">
-                  <Link className="project-img" to="/">
-                    <img src={project.img} alt="" />
-                  </Link>
-                </div>
-                <div className="project-details">
-                  <p id="project-name"> &#x2192; {project.name}</p>
-                  <p id="project-category">{project.category}</p>
-                </div>
+    <div
+      className="projects"
+      ref={containerRef}
+      style={{
+        height: "100vh",
+        // overflowY: "auto",
+        // to enable infinite scrolling, uncomment `overflowY: "auto"` and remove the <ReactLenis root> component from root
+      }}
+    >
+      <div className="container">
+        {projectList.map((project) => (
+          <div className="row" key={project.id}>
+            <div className="project-item">
+              <div className="project-img-container">
+                <Link className="project-img" to="/">
+                  <img src={project.img} alt="" />
+                </Link>
               </div>
-              <ProjectCopy />
+              <div className="project-details">
+                <p id="project-name"> &#x2192; {project.name}</p>
+                <p id="project-category">{project.category}</p>
+              </div>
             </div>
-          ))}
-        </div>
+            <ProjectCopy
+              description={project.description}
+              githubURL={project.githubURL}
+              key={crypto.randomUUID()}
+              liveURL={project.liveURL}
+            />
+          </div>
+        ))}
       </div>
-    </ReactLenis>
+    </div>
   );
 };
 

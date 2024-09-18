@@ -1,27 +1,18 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-const ProjectCopy = () => {
+const ProjectCopy = ({ description, liveURL, githubURL }) => {
   return (
     <div className="col">
-      <p>
-        A campaign designed to capture the innovation, creativity, and energy
-        that TechCorp brings to the forefront of technology. Highlighting the
-        cutting-edge developments for their latest product launch, this project
-        emphasizes the fusion of technology and art, creating a visually
-        striking and engaging experience.
-      </p>
+      <p>{description}</p>
 
       <div className="project-sub-info">
-        <div className="sub-col">
-          <span>Branding</span>
-          <span>Visual Design</span>
-          <span>Typography</span>
-          <span>Animation</span>
-        </div>
-
-        <div className="sub-col">
+        <Link className="sub-col" to={liveURL} target="_blank">
           <span>&#x2192; Live Demo</span>
-        </div>
+        </Link>
+        <Link className="sub-col" to={githubURL} target="_blank">
+          <span>&#x2192; Github</span>
+        </Link>
       </div>
     </div>
   );

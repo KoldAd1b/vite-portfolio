@@ -19,7 +19,6 @@ function App() {
     "/projects": "Projects | Ahnaf Adib ",
     "/archive": "Archive | Ahnaf Adib ",
     "/information": "Information | Ahnaf Adib ",
-    "/sample-project": "Sample Project | Ahnaf Adib ",
   };
 
   useEffect(() => {

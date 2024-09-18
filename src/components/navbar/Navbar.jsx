@@ -3,9 +3,8 @@ import { Link } from "react-router-dom";
 
 import "./Navbar.css";
 
-import ArticleImg1 from "../../assets/nav/article-1.png";
-import ArticleImg2 from "../../assets/nav/article-2.png";
-import ArticleImg3 from "../../assets/nav/article-3.png";
+import ArticleImg1 from "../../assets/nav/article-1.svg";
+import ArticleImg2 from "../../assets/nav/article-2.svg";
 
 const Navbar = () => {
   const [isActive, setIsActive] = useState(false);
@@ -20,10 +19,6 @@ const Navbar = () => {
       url: "/projects",
     },
     {
-      label: "Archive",
-      url: "/archive",
-    },
-    {
       label: "Information",
       url: "/information",
     },
@@ -31,22 +26,16 @@ const Navbar = () => {
 
   const articleItems = [
     {
-      url: "",
-      title: "Plause Studio",
-      subTitle: "Agency — Crafting for a minimal experience",
+      url: "https://fintrack-next-psi.vercel.app/",
+      title: "Fintrack",
+      subTitle: "Pretty useful financial application",
       img: ArticleImg1,
     },
     {
-      url: "",
-      title: "Awkward",
-      subTitle: "Design for a better future and past",
+      url: "https://graphic-tool.vercel.app/",
+      title: "Graphica",
+      subTitle: "Moderately useful graphic tool",
       img: ArticleImg2,
-    },
-    {
-      url: "",
-      title: "Syne",
-      subTitle: "Showcase — Prove for a better website",
-      img: ArticleImg3,
     },
   ];
 
@@ -79,7 +68,7 @@ const Navbar = () => {
             id={`article-item-${index + 1}`}
             key={index}
           >
-            <Link to={item.url}>
+            <Link target="_blank" to={item.url}>
               <div className="article-item-img">
                 <img src={item.img} alt={`Article Img ${index + 1}`} />
               </div>
